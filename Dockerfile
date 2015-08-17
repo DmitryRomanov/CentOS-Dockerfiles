@@ -7,4 +7,4 @@ RUN ["yum", "install", "-y", "puppet", "ruby-json", "tar"]
 COPY bashrc /etc/bashrc
 COPY puppet.conf /etc/puppet/puppet.conf
 
-CMD /usr/bin/puppet agent --test ; /bin/bash
+CMD rm -f /var/lib/puppet/state/agent_catalog_run.lock ; /usr/bin/puppet agent --test ; /bin/bash
