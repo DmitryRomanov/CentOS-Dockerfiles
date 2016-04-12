@@ -12,4 +12,9 @@ RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
 COPY s6_puppet_run /etc/s6/services/puppet/run
 RUN ["chmod", "+x", "/etc/s6/services/puppet/run"]
 
+COPY s6_puppet_log_run /etc/s6/services/puppet/log/run
+RUN ["mkdir", "/var/log/s6-puppet"]
+RUN ["chmod", "-R", "777", "/var/log/s6-puppet"]
+RUN ["chmod", "+x", "/etc/s6/services/puppet/log/run"]
+
 ENTRYPOINT ["/init"]

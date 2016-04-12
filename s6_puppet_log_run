@@ -1,0 +1,2 @@
+#!/bin/sh
+exec logutil-service /var/log/s6-puppet
