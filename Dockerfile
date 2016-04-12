@@ -7,4 +7,9 @@ RUN ["yum", "install", "-y", "puppet", "ruby-json", "tar", "nano"]
 COPY bashrc /etc/bashrc
 COPY puppet.conf /etc/puppet/puppet.conf
 
-CMD rm -f /var/lib/puppet/state/agent_catalog_run.lock ; /usr/bin/puppet agent --test ; /bin/bash
+ADD https://github.com/just-containers/s6-overlay/releases/download/v1.17.2.0/s6-overlay-amd64.tar.gz /tmp/
+RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C /
+COPY s6_puppet_run /etc/s6/services/puppet/run
+RUN ["chmod", "+x", "/etc/s6/services/puppet/run"]
+
+ENTRYPOINT ["/init"]
