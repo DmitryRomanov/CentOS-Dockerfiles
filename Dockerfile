@@ -16,8 +16,8 @@ rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
 rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-RUN ["rpm", "-ivh", "http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm"]
-RUN ["yum", "install", "-y", "puppet", "ruby-json", "tar", "nano"]
+RUN ["rpm", "-ivh", "https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm"]
+RUN ["yum", "install", "-y", "puppet-agent", "tar", "nano"]
 COPY bashrc /etc/bashrc
 COPY puppet.conf /etc/puppet/puppet.conf
 
