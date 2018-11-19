@@ -1,3 +1,0 @@
-#!/bin/execlineb -P
-puppet agent --logdest=/var/log/puppet.log
-
